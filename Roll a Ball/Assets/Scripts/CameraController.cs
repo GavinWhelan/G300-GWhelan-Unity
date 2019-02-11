@@ -9,15 +9,15 @@ public class CameraController : MonoBehaviour
 
     private Vector3 offset;
 
-    // Start is called before the first frame update
+    // Sets camera offset value
     void Start()
     {
-        offset - transform.position - player.transform.position;
+        offset = transform.position - player.transform.position;
     }
 
-    // Update is called once per frame
-    void Update()
+    // Updates camera position based on player movement
+    void LateUpdate()
     {
-        
+        transform.position = player.transform.position + offset;
     }
 }
