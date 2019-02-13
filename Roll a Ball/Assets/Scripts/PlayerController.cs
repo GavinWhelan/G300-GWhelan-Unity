@@ -16,4 +16,13 @@ public class PlayerController : MonoBehaviour
 
         GetComponent<Rigidbody>().AddForce(movement * speed);
     }
+
+    // Checks whether our game object collides with a pickup object
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "PickUp")
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
 }
