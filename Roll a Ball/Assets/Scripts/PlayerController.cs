@@ -1,10 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    private int count;
+    public TextMeshProUGUI countText;
+
+    // Called at the start
+    private void Start()
+    {
+        count = 0;
+        SetCountText();
+    }
 
     // Moves the player based on controller input
     private void FixedUpdate()
@@ -23,6 +33,14 @@ public class PlayerController : MonoBehaviour
         if(other.gameObject.tag == "PickUp")
         {
             other.gameObject.SetActive(false);
+            count += 1;
+            SetCountText();
         }
+    }
+
+    // Changes the count text to match count
+    void SetCountText()
+    {
+        countText.text = "Count: " + count.ToString();
     }
 }
