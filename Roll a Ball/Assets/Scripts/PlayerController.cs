@@ -29,14 +29,21 @@ public class PlayerController : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(movement * speed);
     }
 
-    // Checks whether our game object collides with a pickup object
+    // Checks whether our game object collides with a pickup object or a partner
     private void OnTriggerEnter(Collider other)
     {
+        // For interactions with pickup objects
         if(other.gameObject.tag == "PickUp")
         {
             other.gameObject.SetActive(false);
             count += 1;
             SetCountText();
+        }
+
+        // For interactions with partners
+        if(other.gameObject.tag == "Partner")
+        {
+            other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(1000.0f, 0.0f, 0.0f));
         }
     }
 
