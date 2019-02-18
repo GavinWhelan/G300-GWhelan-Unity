@@ -39,12 +39,6 @@ public class PlayerController : MonoBehaviour
             count += 1;
             SetCountText();
         }
-
-        // For interactions with partners
-        if(other.gameObject.tag == "Partner")
-        {
-            other.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(1000.0f, 0.0f, 0.0f));
-        }
     }
 
     // Changes the count text to match count
