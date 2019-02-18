@@ -1,19 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using TMPro;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed;
     private int count;
-    public TextMeshProUGUI countText;
+    public Text countText;
+    public Text winText;
 
     // Called at the start
     private void Start()
     {
         count = 0;
         SetCountText();
+        winText.text = "";
     }
 
     // Moves the player based on controller input
@@ -42,5 +44,9 @@ public class PlayerController : MonoBehaviour
     void SetCountText()
     {
         countText.text = "Count: " + count.ToString();
+        if(count >= 6)
+        {
+            winText.text = "You Win!";
+        }
     }
 }
