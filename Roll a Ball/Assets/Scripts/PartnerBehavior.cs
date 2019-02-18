@@ -12,18 +12,11 @@ public class PartnerBehavior : MonoBehaviour
         linked = false;
     }
 
-    // Update is called once per frame
+    // If linked, moves the partner in relation to the player movement 
     private void FixedUpdate()
     {
         if (linked == true)
         {
-            /*
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            Vector3 movement = new Vector3(moveHorizontal, 0.0f, moveVertical);
-            */
-
             Vector3 movement;
 
             if (Vector3.Distance(GameObject.Find("Player").transform.position, GetComponent<Transform>().position) >= 2.0f)
@@ -47,4 +40,16 @@ public class PartnerBehavior : MonoBehaviour
             linked = true;
         }
     }
+
+    /*
+    // Checks whether our game object collides with a pickup object
+    private void OnTriggerEnter(Collider other)
+    {
+        // For interactions with pickup objects
+        if (other.gameObject.tag == "PickUp")
+        {
+            other.gameObject.SetActive(false);
+        }
+    }
+    */
 }
